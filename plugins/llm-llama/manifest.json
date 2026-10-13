@@ -1,0 +1,20 @@
+{
+  "id": "llm-llama",
+  "name": "LLaMA-3 Transformer Engine",
+  "version": "1.0.0",
+  "description": "Transformer LLM inference engine supporting pipeline parallel layer partitioning and speculative decoding across phone NPU and laptop CPU",
+  "author": "PocketBridge AI Hub",
+  "license": "Apache-2.0",
+  "kind": "AiModel",
+  "adapter_id": "llm_pipeline.v1",
+  "requirements": {
+    "min_host_ram_mb": 2048,
+    "min_worker_ram_mb": 1536,
+    "min_worker_storage_mb": 500
+  },
+  "sha256": "f8e9d0123456789abcdef0123456789abcdef0123456789abcdef0123456789",
+  "size_bytes": 45000000,
+  "host_entrypoint": "llama_pipeline_host",
+  "worker_entrypoint": "libllama_npu_worker.so",
+  "download_url": "https://github.com/vijaygovindBiju/pocketbridge-plugins/releases/download/v1.0.0/llm-llama.tar.gz"
+}
