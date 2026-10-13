@@ -1,0 +1,20 @@
+{
+  "id": "browser-cdp",
+  "name": "Headless Chromium Tab Renderer",
+  "version": "0.9.0",
+  "description": "Offloads inactive Chrome/Firefox tabs to mobile phone's Android WebView engine over USB",
+  "author": "PocketBridge Core Team",
+  "license": "Apache-2.0",
+  "kind": "WebHeadless",
+  "adapter_id": "browser_cdp.v1",
+  "requirements": {
+    "min_host_ram_mb": 512,
+    "min_worker_ram_mb": 512,
+    "min_worker_storage_mb": 50
+  },
+  "sha256": "c4d5e6f7a8b90123456789abcdef0123456789abcdef0123456789abcdef0123",
+  "size_bytes": 15000000,
+  "host_entrypoint": "cdp_bridge",
+  "worker_entrypoint": "headless_worker.html",
+  "download_url": "https://github.com/vijaygovindBiju/pocketbridge-plugins/releases/download/v0.9.0/browser-cdp.tar.gz"
+}

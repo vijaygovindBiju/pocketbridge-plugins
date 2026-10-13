@@ -1,0 +1,20 @@
+{
+  "id": "ai-whisper",
+  "name": "Whisper Voice Transcription",
+  "version": "1.1.0",
+  "description": "On-device speech-to-text audio transcription running on Snapdragon 8 Elite NPU / CPU",
+  "author": "PocketBridge AI Hub",
+  "license": "MIT",
+  "kind": "AiModel",
+  "adapter_id": "ai_whisper.v1",
+  "requirements": {
+    "min_host_ram_mb": 1024,
+    "min_worker_ram_mb": 1536,
+    "min_worker_storage_mb": 150
+  },
+  "sha256": "a1b2c3d4e5f60718293a4b5c6d7e8f90123456789abcdef0123456789abcdef0",
+  "size_bytes": 75000000,
+  "host_entrypoint": "whisper_runner",
+  "worker_entrypoint": "whisper-tiny.bin",
+  "download_url": "https://github.com/vijaygovindBiju/pocketbridge-plugins/releases/download/v1.0.0/ai-whisper.tar.gz"
+}

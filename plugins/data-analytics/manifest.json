@@ -1,0 +1,20 @@
+{
+  "id": "data-analytics",
+  "name": "Data Analytics Engine",
+  "version": "1.0.0",
+  "description": "Structured CSV/TSV table reduction, sum, min/max, and numerical filtering",
+  "author": "PocketBridge Core Team",
+  "license": "Apache-2.0",
+  "kind": "Native",
+  "adapter_id": "data_analytics.v1",
+  "requirements": {
+    "min_host_ram_mb": 128,
+    "min_worker_ram_mb": 64,
+    "min_worker_storage_mb": 10
+  },
+  "sha256": "f4b1c24298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852a111",
+  "size_bytes": 850000,
+  "host_entrypoint": "data_analytics",
+  "worker_entrypoint": "libdata_analytics.so",
+  "download_url": "https://github.com/vijaygovindBiju/pocketbridge-plugins/releases/download/v1.0.0/data-analytics.tar.gz"
+}

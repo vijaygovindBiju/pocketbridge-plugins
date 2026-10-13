@@ -1,0 +1,20 @@
+{
+  "id": "media-ffmpeg",
+  "name": "FFmpeg Parallel Media Splitter",
+  "version": "1.2.0",
+  "description": "Distributed H.264/AV1 video transcoding slices across Intel QuickSync and Snapdragon GPU",
+  "author": "PocketBridge Community",
+  "license": "GPL-3.0",
+  "kind": "Native",
+  "adapter_id": "media_ffmpeg.v1",
+  "requirements": {
+    "min_host_ram_mb": 1024,
+    "min_worker_ram_mb": 1024,
+    "min_worker_storage_mb": 100
+  },
+  "sha256": "d7e8f90123456789abcdef0123456789abcdef0123456789abcdef0123456789",
+  "size_bytes": 35000000,
+  "host_entrypoint": "ffmpeg_host",
+  "worker_entrypoint": "libavcodec_worker.so",
+  "download_url": "https://github.com/vijaygovindBiju/pocketbridge-plugins/releases/download/v1.2.0/media-ffmpeg.tar.gz"
+}

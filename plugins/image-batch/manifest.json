@@ -1,0 +1,20 @@
+{
+  "id": "image-batch",
+  "name": "Image Batch Processor",
+  "version": "1.0.0",
+  "description": "High-throughput parallel image resizing, inversion, and box-blur filtering across Laptop and Phone",
+  "author": "PocketBridge Core Team",
+  "license": "Apache-2.0",
+  "kind": "Native",
+  "adapter_id": "image_batch.v1",
+  "requirements": {
+    "min_host_ram_mb": 256,
+    "min_worker_ram_mb": 128,
+    "min_worker_storage_mb": 15
+  },
+  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "size_bytes": 1250000,
+  "host_entrypoint": "image_batch",
+  "worker_entrypoint": "libimage_batch.so",
+  "download_url": "https://github.com/vijaygovindBiju/pocketbridge-plugins/releases/download/v1.0.0/image-batch.tar.gz"
+}
