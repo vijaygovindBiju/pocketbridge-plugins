@@ -1,0 +1,20 @@
+{
+  "id": "phone-cluster",
+  "name": "Multi-Phone Cluster Orchestrator",
+  "version": "1.0.0",
+  "description": "Auto-discovers and orchestrates multi-phone USB device farms with automated port forwarding, dynamic load-balancing, and failover",
+  "author": "PocketBridge Core Team",
+  "license": "Apache-2.0",
+  "kind": "Native",
+  "adapter_id": "phone_cluster.v1",
+  "requirements": {
+    "min_host_ram_mb": 256,
+    "min_worker_ram_mb": 64,
+    "min_worker_storage_mb": 5
+  },
+  "sha256": "e5f60718293a4b5c6d7e8f90123456789abcdef0123456789abcdef012345678",
+  "size_bytes": 1200000,
+  "host_entrypoint": "cluster_orchestrator",
+  "worker_entrypoint": "libcluster_worker.so",
+  "download_url": "https://github.com/vijaygovindBiju/pocketbridge-plugins/releases/download/v1.0.0/phone-cluster.tar.gz"
+}

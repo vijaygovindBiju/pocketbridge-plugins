@@ -36,6 +36,7 @@ pocketbridge plugin remove image-batch
 | **ai-whisper** | v1.1.0 | 71.5 MB | On-device speech-to-text transcription on Snapdragon 8 Elite NPU |
 | **browser-cdp** | v0.9.0 | 14.3 MB | Offloads inactive browser tabs to Android WebView engine |
 | **media-ffmpeg** | v1.2.0 | 33.4 MB | Distributed H.264/AV1 video transcoding across Intel QuickSync and Snapdragon GPU |
+| **phone-cluster** | v1.0.0 | 1.2 MB | Multi-phone USB device farm orchestration with load balancing and failover |
 
 ## How It Works
 
