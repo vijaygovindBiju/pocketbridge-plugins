@@ -1,105 +1,114 @@
-# PocketBridge Plugin & AI Model Hub
+# PocketBridge Plugin & AI Model Hub ⚡
 
-Official community plugin registry for [PocketBridge](https://github.com/vijaygovindBiju/PocketBridge) — the USB-to-USB compute offloading engine between your Linux laptop and Android phone.
+> **Official community plugin & compute workload registry for [PocketBridge](https://github.com/vijaygovindBiju/PocketBridge)**  
+> *Transform idle Android hardware into active, hardware-accelerated coprocessors over high-speed USB.*
 
-## What Is This?
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](LICENSE)
+[![Platform: Linux x86_64](https://img.shields.io/badge/Host-Linux%20x86__64-orange.svg)]()
+[![Platform: Android ARM64](https://img.shields.io/badge/Worker-Android%20ARM64-brightgreen.svg)]()
+[![Transport: USB](https://img.shields.io/badge/Link-USB--C%20(AOA%20%2F%20ADB)-informational.svg)]()
 
-This repository hosts **downloadable plugin packages** that extend PocketBridge with new workloads — image processing, data analytics, AI speech transcription, headless browser rendering, video transcoding, and more.
+---
 
-The core PocketBridge engine ships with only one built-in adapter (`chunk_transform.v1`) to keep the binary small (~50 KB). Everything else is installed on-demand from this hub.
+## 📌 What Is This?
 
-## Quick Start
+This repository hosts **verified, downloadable plugin packages** that extend [PocketBridge](https://github.com/vijaygovindBiju/PocketBridge) with high-performance offloaded workloads—including transformer LLM inference, on-device Whisper voice transcription, distributed video transcoding, parallel image processing, and headless browser rendering.
+
+The core PocketBridge daemon ships with a lightweight built-in adapter to maintain a minimal binary footprint (~50 KB). All specialized compute workloads and neural models are installed on-demand from this hub.
+
+---
+
+## 🚀 Quick Start
 
 ```bash
-# List all available plugins
+# List all available community plugins
 pocketbridge plugin list
 
-# Install a plugin (downloads to ~/.pocketbridge/plugins/ and syncs to phone over USB)
-pocketbridge plugin install image-batch
+# Install a plugin (verifies SHA-256 and syncs to phone over USB)
+pocketbridge plugin install llm-llama
 
-# Use it immediately
-pocketbridge run -a image_batch --local-only --records 100
+# Execute an offloaded workload immediately
+pocketbridge run -a llm_llama --prompt "Explain quantum computing in 3 sentences."
 
-# View plugin details and hardware requirements
+# Inspect plugin hardware requirements and model weights
 pocketbridge plugin info ai-whisper
 
-# Remove a plugin
+# Uninstall a plugin
 pocketbridge plugin remove image-batch
 ```
 
-## Available Plugins
+---
 
-| Plugin | Version | Size | Description |
-|--------|---------|------|-------------|
-| **image-batch** | v1.0.0 | 1.2 MB | High-throughput parallel image resizing, inversion, and box-blur filtering |
-| **data-analytics** | v1.0.0 | 0.8 MB | Structured CSV/TSV table reduction, sum, min/max, and numerical filtering |
-| **ai-whisper** | v1.1.0 | 71.5 MB | On-device speech-to-text transcription on Snapdragon 8 Elite NPU |
-| **browser-cdp** | v0.9.0 | 14.3 MB | Offloads inactive browser tabs to Android WebView engine |
-| **media-ffmpeg** | v1.2.0 | 33.4 MB | Distributed H.264/AV1 video transcoding across Intel QuickSync and Snapdragon GPU |
-| **phone-cluster** | v1.0.0 | 1.2 MB | Multi-phone USB device farm orchestration with load balancing and failover |
+## 📦 Available Plugins
 
-## How It Works
+| Plugin | Version | Binary / Model Size | Description | Hardware Target |
+| :--- | :--- | :--- | :--- | :--- |
+| **`llm-llama`** | `v1.0.0` | 185.0 MB | On-device quantized GGUF transformer text generation & completion | Qualcomm Hexagon NPU / Adreno GPU |
+| **`ai-whisper`** | `v1.1.0` | 71.5 MB | On-device speech-to-text audio transcription | Qualcomm Hexagon NPU / CPU |
+| **`media-ffmpeg`** | `v1.2.0` | 33.4 MB | Distributed H.264/AV1 hardware-accelerated video transcoding | Intel QuickSync + Snapdragon GPU |
+| **`browser-cdp`** | `v0.9.0` | 14.3 MB | Offloads inactive browser tabs and DOM trees to Android WebView | Android WebKit Engine |
+| **`image-batch`** | `v1.0.0` | 1.2 MB | Parallel batch image resizing, color inversion, and box-blur filtering | Multi-Core ARM64 NEON |
+| **`data-analytics`**| `v1.0.0` | 0.8 MB | Structured CSV/TSV table reduction, sum, min/max, and numerical filtering | Vectorized SIMD |
+| **`phone-cluster`** | `v1.0.0` | 1.2 MB | Multi-device USB farm orchestration with load balancing and failover | Multi-USB Controller Hub |
 
-```
+---
+
+## ⚙️ How Installation & Verification Works
+
+```text
 ┌──────────────────────────────────────────────────────────────────┐
-│  pocketbridge plugin install ai-whisper                         │
+│  pocketbridge plugin install llm-llama                          │
 │                                                                  │
-│  [1/4] Inspecting host resources... (15688 MB RAM)    [OK]      │
-│  [2/4] Querying worker phone over ADB...              [OK]      │
+│  [1/4] Inspecting host resources... (16 GB RAM)       [OK]      │
+│  [2/4] Querying worker phone over USB...              [OK]      │
 │  [3/4] Pre-flight hardware requirement gates...       [OK]      │
-│  [4/4] Installing plugin to host...                   [OK]      │
+│  [4/4] Installing host adapter library...             [OK]      │
 │  [Sync] Transferred to Galaxy S25 Ultra over USB      [OK]      │
 │                                                                  │
-│  Plugin 'Whisper Voice Transcription' (v1.1.0) installed!       │
-│  Adapter 'ai_whisper.v1' is now active.                         │
+│  Plugin 'Llama LLM Inference' (v1.0.0) installed!               │
+│  Adapter 'llm_llama.v1' is now active.                          │
 └──────────────────────────────────────────────────────────────────┘
 ```
 
-**Pre-flight safety gates** automatically check:
-- Host laptop RAM meets minimum requirement
-- Android phone RAM is sufficient for the plugin
-- Phone storage has enough free space for model weights
-- SHA-256 cryptographic hash verification of all downloaded payloads
+**Automated Pre-Flight Safety Gates:**
+- **Host & Phone Memory Checks:** Verifies minimum RAM thresholds before initiating download.
+- **Storage Availability:** Confirms sufficient free space on device flash memory.
+- **Cryptographic Hash Verification:** Validates SHA-256 checksums of all native binaries and quantized model weights before execution.
+- **Architecture Validation:** Guarantees ABI compatibility (`x86_64` for host, `arm64-v8a` for Android coprocessor).
 
-## Plugin Package Structure
+---
 
-Each plugin is a directory containing:
+## 📂 Plugin Package Structure
 
-```
+Each plugin directory follows a standardized schema:
+
+```text
 plugins/image-batch/
-├── manifest.json          # Metadata, requirements, checksums
-├── README.md              # Usage documentation
+├── manifest.json          # Metadata, hardware requirements, entrypoints, SHA-256 checksums
+├── README.md              # Documentation, benchmark metrics, CLI arguments
 └── releases/
     └── v1.0.0/
         ├── linux-x86_64/
         │   └── libimage_batch.so        # Host Linux shared library
         └── android-arm64/
-            └── libimage_batch_arm.so    # Worker Android NDK binary
+            └── libimage_batch_arm.so    # Worker Android NDK shared library
 ```
 
-## Creating Your Own Plugin
+---
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide. In brief:
+## 🛠️ Contributing a Plugin
 
-1. Fork this repository
-2. Create your plugin directory under `plugins/your-plugin-name/`
-3. Write a `manifest.json` following the schema below
-4. Build pre-compiled binaries for Linux x86_64 and Android ARM64
-5. Compute SHA-256 checksums
-6. Submit a Pull Request
+We welcome community-contributed plugins! Please refer to **[CONTRIBUTING.md](CONTRIBUTING.md)** for our full development guide.
 
-Your plugin will be reviewed and, once approved, becomes available to all PocketBridge users worldwide.
+1. Fork this repository.
+2. Create your plugin directory under `plugins/<your-plugin-name>/`.
+3. Provide a valid `manifest.json` referencing your compiled binaries.
+4. Compile pre-built binaries for `linux-x86_64` and `android-arm64`.
+5. Compute and attach SHA-256 cryptographic hashes.
+6. Submit a Pull Request.
 
-**Important:** Your plugin PR only changes this repository. The core PocketBridge engine source code is never modified.
+---
 
-## Hardware Targets
+## 📄 License
 
-| Platform | Architecture | Tested Device |
-|----------|-------------|---------------|
-| **Host** | x86_64 (Intel/AMD) | 13th Gen Intel Core i5-13420H, Arch Linux |
-| **Worker** | aarch64 (ARM64) | Samsung Galaxy S25 Ultra, Snapdragon 8 Elite |
-| **Link** | USB-C (physical cable, no Wi-Fi) | ADB forward tcp:9876 |
-
-## License
-
-Individual plugins may have their own licenses (specified in each `manifest.json`). The registry infrastructure is licensed under Apache-2.0.
+Individual plugins declare their own licenses within their respective `manifest.json`. The hub infrastructure and plugin registry manifest are licensed under the **[Apache License 2.0](LICENSE)**.
